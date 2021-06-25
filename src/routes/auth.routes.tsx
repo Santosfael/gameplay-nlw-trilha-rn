@@ -1,8 +1,13 @@
 import React from "react";
 import { createStackNavigator } from '@react-navigation/stack';
 
+import { theme } from "../global/styles/theme";
+
 import { Home } from "../screens/Home";
+import { AppoitmentDetails } from "../screens/AppoitmentDetails";
+import { AppoitmentCreate } from "../screens/AppoitmentCreate";
 import { SignIn } from "../screens/SignIn";
+
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -12,7 +17,7 @@ export function AuthRoutes() {
             headerMode="none"
             screenOptions={{
                 cardStyle: {
-                    backgroundColor: 'transparent'
+                    backgroundColor: theme.colors.secondary100
                 }
             }}
         >
@@ -24,6 +29,16 @@ export function AuthRoutes() {
             <Screen
                 name="Home"
                 component={Home}
+            />
+
+            <Screen
+                name="AppoitmentDetails"
+                component={AppoitmentDetails}
+            />
+
+            <Screen
+                name="AppoitmentCreate"
+                component={AppoitmentCreate}
             />
         </Navigator>
     )
