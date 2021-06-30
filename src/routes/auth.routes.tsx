@@ -6,7 +6,6 @@ import { theme } from "../global/styles/theme";
 import { Home } from "../screens/Home";
 import { AppoitmentDetails } from "../screens/AppoitmentDetails";
 import { AppoitmentCreate } from "../screens/AppoitmentCreate";
-import { SignIn } from "../screens/SignIn";
 
 
 const { Navigator, Screen } = createStackNavigator();
@@ -21,11 +20,6 @@ export function AuthRoutes() {
                 }
             }}
         >
-            <Screen
-                name="SignIn"
-                component={SignIn}
-            />
-
             <Screen
                 name="Home"
                 component={Home}

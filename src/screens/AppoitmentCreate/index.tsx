@@ -28,9 +28,17 @@ export function AppoitmentCreate() {
         setOpenGuildsModal(true);
     }
 
+    function handleCloseGuilds() {
+        setOpenGuildsModal(false);
+    }
+
     function handleGuildSelect(guildSelect: GuildProps) {
         setGuild(guildSelect);
         setOpenGuildsModal(false);
+    }
+
+    function handleCategorySlect(categoryId: string) {
+        setCategory(categoryId);
     }
 
     return (
@@ -38,11 +46,12 @@ export function AppoitmentCreate() {
             behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
             style={styles.container}
         >
-            <ScrollView>
-                <Background>
-                    <Header
-                        title="Agendar Partida"
-                    />
+
+            <Background>
+                <Header
+                    title="Agendar Partida"
+                />
+                <ScrollView>
 
                     <Text style={[
                         styles.label,
@@ -54,7 +63,7 @@ export function AppoitmentCreate() {
 
                     <CategorySelect
                         hasCheckBox
-                        setCategory={setCategory}
+                        setCategory={handleCategorySlect}
                         categorySelected={category}
                     />
 
@@ -88,7 +97,7 @@ export function AppoitmentCreate() {
 
                         <View style={styles.field}>
                             <View>
-                                <Text style={styles.label}>
+                                <Text style={[styles.label, { marginBottom: 12 }]}>
                                     Dia e mês
                                 </Text>
 
@@ -102,7 +111,7 @@ export function AppoitmentCreate() {
                             </View>
 
                             <View>
-                                <Text style={styles.label}>
+                                <Text style={[styles.label, { marginBottom: 12 }]}>
                                     Hora e minuto
                                 </Text>
 
@@ -137,14 +146,12 @@ export function AppoitmentCreate() {
                             <Button title="Agendar" />
                         </View>
                     </View>
+                </ScrollView>
 
-                    <ModalView visible={openGuildsModal}>
-                        <Guilds handleGuildSelect={handleGuildSelect} />
-                    </ModalView>
-                </Background>
-            </ScrollView>
-
-
+                <ModalView visible={openGuildsModal} closeModal={handleCloseGuilds}>
+                    <Guilds handleGuildSelect={handleGuildSelect} />
+                </ModalView>
+            </Background>
         </KeyboardAvoidingView>
     );
 }
