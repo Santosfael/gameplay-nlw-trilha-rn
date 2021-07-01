@@ -12,7 +12,7 @@ import { GuildIcon } from "../GuildIcon";
 import { GuildProps } from "../Guild";
 import { styles } from "./styles";
 
-export type AppoitmentProps = {
+export type AppointmentProps = {
     id: string;
     guild: GuildProps;
     category: string;
@@ -21,10 +21,10 @@ export type AppoitmentProps = {
 }
 
 type Props = RectButtonProps & {
-    data: AppoitmentProps;
+    data: AppointmentProps;
 }
 
-export function Appoitment({ data, ...rest }: Props) {
+export function Appointment({ data, ...rest }: Props) {
     const [category] = categories.filter(item => item.id == data.category);
     const { owner } = data.guild;
     const { primary, on, secondary50, secondary70 } = theme.colors;
@@ -35,7 +35,7 @@ export function Appoitment({ data, ...rest }: Props) {
                     style={styles.guildIconContainer}
                     colors={[secondary50, secondary70]}
                 >
-                    <GuildIcon />
+                    <GuildIcon guildId={data.guild.id} iconId={data.guild.icon} />
                 </LinearGradient>
 
                 <View style={styles.content}>
